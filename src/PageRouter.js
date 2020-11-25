@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home, Popularity, Sale } from "./pages";
+import { Home, Dress, Hair, Mypage } from "./pages";
 import { Layout } from "./Layouts";
 
 const PageRouter = () => {
@@ -15,8 +15,9 @@ const PageRouter = () => {
             }}
           />
           <Route path="/home" exact="true" component={Home} />
-          <Route path="/popularity" exact="true" component={Popularity} />
-          <Route path="/sale" exact="true" component={Sale} />
+          <Route path="/dress" exact="true" component={Dress} />
+          <Route path="/hair" exact="true" component={Hair} />
+          <Route path="/mypage" exact="true" component={Mypage} />
         </Switch>
       </Layout>
     </Router>

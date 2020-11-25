@@ -1,3 +1,4 @@
 export { default as Home } from "./Home/Home";
-export { default as Popularity } from "./Popularity/Popularity";
-export { default as Sale } from "./Sale/Sale";
+export { default as Dress } from "./Dress/Dress";
+export { default as Hair } from "./Hair/Hair";
+export { default as Mypage } from "./Mypage/Mypage";

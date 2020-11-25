@@ -1,6 +1,11 @@
 import React, { Component } from "react";
-import { FooterBorder, FooterItemBorder, LinkItem } from "./Footer.styled";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  FooterBorder,
+  FooterItemBorder,
+  LinkItem,
+  FooterBadge,
+} from "./Footer.styled";
+import { Badge } from "react-bootstrap";
 
 const FooterItem = ({ key, content }) => {
   return <LinkItem key={key}>{content}</LinkItem>;
@@ -27,15 +32,17 @@ const Footer = () => {
   ];
 
   return (
-    <div>
-      <FooterBorder>
-        <FooterItemBorder>
-          {footerlist.map((footer) => {
-            return <FooterItem key={footer.id} content={footer.content} />;
-          })}
-        </FooterItemBorder>
-      </FooterBorder>
-    </div>
+    <FooterBorder>
+      <FooterItemBorder>
+        {footerlist.map((footer) => {
+          return <FooterItem key={footer.id} content={footer.content} />;
+        })}
+        <FooterBadge>
+          <Badge>man's commerce</Badge>
+        </FooterBadge>
+      </FooterItemBorder>
+    </FooterBorder>
   );
 };
+
 export default Footer;

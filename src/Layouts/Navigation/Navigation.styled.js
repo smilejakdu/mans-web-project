@@ -5,8 +5,7 @@ import palette from "../../util/styles/palette";
 const HeaderBorder = styled.div`
   background: white;
   border-bottom: 1px solid ${palette.gray[5]};
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
 `;
 
 const Logo = styled.div`
