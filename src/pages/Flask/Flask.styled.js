@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import palette from "../../util/styles/palette";
+import palette from "../../utils/styles/palette";
 
-const DressCardBorder = styled.div`
+const HairCardBorder = styled.div`
   margin: 10px;
   display: flex;
   float: left;
 `;
 
-export { DressCardBorder };
+export { HairCardBorder };

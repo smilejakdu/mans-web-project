@@ -8,9 +8,6 @@ const Layout = ({ children, match, location, history }) => {
         <Navigation />
       </NavigationBorder>
       <BodyBorder>{children}</BodyBorder>
-      <FooterBorder>
-        <Footer />
-      </FooterBorder>
     </div>
   );
 };

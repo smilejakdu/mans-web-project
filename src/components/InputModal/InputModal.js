@@ -9,9 +9,9 @@ import {
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
 
-const InputModal = ({ isOpen, close, textData }) => {
+const InputModal = ({ isOpen, close, textData, tokenData }) => {
   const [text, setText] = useState(textData);
-  const [email, setEmail] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRePassword] = useState("");
 
@@ -20,19 +20,23 @@ const InputModal = ({ isOpen, close, textData }) => {
   const onClickBtn = () => {
     if (text === "login") {
       let data = {
-        email: email,
+        username: username,
         password: password,
       };
-      Axios.post("/users/signin", data)
+      console.log(data);
+      Axios.post("/accounts/signin/", data)
         .then((res) => {
+          console.log(res);
           let {
-            data: { access },
+            data: { token: jwtToken },
           } = res;
-          console.log("access : ", access);
-          localStorage.setItem("token", access);
-          setEmail("");
+          console.log("token : ", jwtToken);
+          // 토큰 저장!!
+          tokenData(jwtToken);
+          history.push("/django");
+          setUserName("");
           setPassword("");
-          history.push("/");
+          close();
         })
         .catch((err) => {
           console.log(err);
@@ -40,16 +44,18 @@ const InputModal = ({ isOpen, close, textData }) => {
         });
     } else if (text === "signup") {
       let data = {
-        email: email,
+        username: username,
         password: password,
         repassword: repassword,
       };
-      Axios.post("/users/signup", data)
+
+      Axios.post("/accounts/signup/", data)
         .then((res) => {
           console.log(res);
-          setEmail("");
+          setUserName("");
           setPassword("");
           setRePassword("");
+          close();
         })
         .catch((err) => {
           console.log(err);
@@ -76,16 +82,16 @@ const InputModal = ({ isOpen, close, textData }) => {
                   <div>
                     <Input
                       type="text"
-                      placeholder="email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
+                      placeholder="username"
+                      onChange={(e) => setUserName(e.target.value)}
+                      value={username}
                       onKeyPress={handleKeyPress}
                       required
                     />
                   </div>
                   <div>
                     <Input
-                      type="text"
+                      type="password"
                       placeholder="password"
                       onChange={(e) => setPassword(e.target.value)}
                       value={password}
@@ -99,16 +105,16 @@ const InputModal = ({ isOpen, close, textData }) => {
                   <div>
                     <Input
                       type="text"
-                      placeholder="email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
+                      placeholder="username"
+                      onChange={(e) => setUserName(e.target.value)}
+                      value={username}
                       onKeyPress={handleKeyPress}
                       required
                     />
                   </div>
                   <div>
                     <Input
-                      type="text"
+                      type="password"
                       placeholder="password"
                       onChange={(e) => setPassword(e.target.value)}
                       value={password}
@@ -118,7 +124,7 @@ const InputModal = ({ isOpen, close, textData }) => {
                   </div>
                   <div>
                     <Input
-                      type="text"
+                      type="password"
                       placeholder="repassword"
                       onChange={(e) => setRePassword(e.target.value)}
                       value={repassword}

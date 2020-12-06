@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 
 import { HeaderBorder, Logo } from "./Navigation.styled";
 import { Button, Navbar, Form, FormControl, Nav, Badge } from "react-bootstrap";
-import { delToken } from "../../store";
-import { useAppContext } from "../../store";
 import InputModal from "../../components/InputModal/InputModal";
 
-const Navigation = () => {
+// redux
+import { connect } from "react-redux";
+
+const Navigation = ({ token_data }) => {
   const [modalShow, setModalShow] = useState(false);
-  const { store, dispatch } = useAppContext();
+
+  let {
+    usertoken: { userToken },
+  } = token_data;
+  console.log(userToken);
 
   const ModalShowOpen = () => {
     setModalShow(true);
@@ -27,25 +32,35 @@ const Navigation = () => {
   return (
     <HeaderBorder>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/home">
-          <Badge variant="secondary">Man's Beauty</Badge>
+        <Navbar.Brand href="/django">
+          <Badge variant="secondary">python community</Badge>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="/hair">hair</Nav.Link>
-            <Nav.Link href="/dress">dress</Nav.Link>
-            {store.isAuthenticated ? (
+            <Nav.Link href="/django">Django</Nav.Link>
+            <Nav.Link href="/flask">Flask</Nav.Link>
+            <Nav.Link href="/mldl">ML & DL</Nav.Link>
+            {userToken !== null ? (
               <>
                 <Nav.Link href="/mypage">Mypage</Nav.Link>
-                <Nav.Link href="/mypage">SignOut</Nav.Link>
+                <Nav.Link
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // dispatch(delToken());
+                  }}
+                >
+                  SignOut
+                </Nav.Link>
               </>
             ) : (
               <Nav.Link onClick={loginBtn}>SignIn</Nav.Link>
             )}
           </Nav>
           <Form inline>
+            <Nav.Link href="/write" className="outline-success">
+              write
+            </Nav.Link>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success">Search</Button>
           </Form>
@@ -62,4 +77,6 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default connect((state) => ({
+  token_data: state,
+}))(Navigation);

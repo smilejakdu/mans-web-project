@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import palette from "../../util/styles/palette";
+import palette from "../../utils/styles/palette";
 
 const HeaderBorder = styled.div`
   background: white;
