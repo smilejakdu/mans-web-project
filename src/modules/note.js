@@ -1,13 +1,13 @@
 import { createAction, handleActions } from "redux-actions";
 
-const INPUT_TITLE = "note/INPUT_TITLE";
+const INPUT_TITLE   = "note/INPUT_TITLE";
 const INPUT_CONTENT = "note/INPUT_CONTENT";
-const ADD_NOTE = "note/ADD_NOTE";
-const REMOVE_NOTE = "note/REMOVE_NOTE";
+const ADD_NOTE      = "note/ADD_NOTE";
+const REMOVE_NOTE   = "note/REMOVE_NOTE";
 
 let id = 0;
 
-export const changeInputTitle = createAction(INPUT_TITLE, (title) => title);
+export const changeInputTitle   = createAction(INPUT_TITLE, (title) => title);
 export const changeInputContent = createAction(
   INPUT_CONTENT,
   (content) => content
@@ -20,12 +20,12 @@ export const addNote = createAction(ADD_NOTE, (title, content) => ({
 export const removeNote = createAction(REMOVE_NOTE, (id) => id);
 
 const initialState = {
-  inputTitle: "",
+  inputTitle  : "",
   inputContent: "",
-  noteList: [
+  noteList : [
     {
-      id: 0,
-      title: "제발 됐으면",
+      id     : 0,
+      title  : "제발 됐으면",
       content: "제발 되주세요",
     },
   ],
@@ -44,8 +44,8 @@ export default handleActions(
     [ADD_NOTE]: (state, action) => ({
       ...state,
       noteList: state.noteList.concat({
-        id: action.payload.id,
-        title: action.payload.title,
+        id     : action.payload.id,
+        title  : action.payload.title,
         content: action.payload.content,
       }),
     }),
