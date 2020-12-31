@@ -2,19 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa0ef4b2-c76b-4003-965f-78dbd341cdde" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/BoardList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/post.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/tokenStorage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Layouts/Layout/Layout.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layouts/Layout/Layout.styled.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Layouts/Navigation/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layouts/Navigation/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Layouts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layouts/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddBoard/AddBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddBoard/AddBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddBoard/AddBoard.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddBoard/AddBoard.styled.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/InputModal/InputModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputModal/InputModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/UserTokenContainer.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/note.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/note.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/note.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/usertoken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/usertoken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Write/Write.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Write/Write.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Write/Write.styled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Write/Write.styled.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,7 +62,8 @@
       <option name="presentableId" value="Default" />
       <updated>1609319455943</updated>
       <workItem from="1609319458163" duration="88000" />
-      <workItem from="1609319561125" duration="3831000" />
+      <workItem from="1609319561125" duration="15181000" />
+      <workItem from="1609376479180" duration="9143000" />
     </task>
     <servers />
   </component>
@@ -61,5 +80,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

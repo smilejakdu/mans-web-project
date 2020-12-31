@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import note from "./note";
+import note from "./post";
 import usertoken from "./usertoken";
 
 export default combineReducers({

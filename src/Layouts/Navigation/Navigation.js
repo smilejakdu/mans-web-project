@@ -1,18 +1,43 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import React, {useState, useEffect, useCallback} from "react";
+import {Link, useHistory} from "react-router-dom";
 
 import {HeaderBorder, Logo} from "./Navigation.styled";
 import {Button, Navbar, Form, FormControl, Nav, Badge} from "react-bootstrap";
 import InputModal from "../../components/InputModal/InputModal";
-
+import Axios from "axios";
 // redux
 import {useSelector, useDispatch} from "react-redux";
-
+import {getUserToken, delUserToken} from "../../modules/usertoken";
 
 const Navigation = () => {
     const [modalShow, setModalShow] = useState(false);
-    const {isLoggedIn} = useSelector(state => state.usertoken);
-    console.log(isLoggedIn);
+    const {isLoggedIn, userName} = useSelector(state => state.usertoken);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            Axios
+                .get("/accounts/token", {
+                    headers: {
+                        Authorization: `${token}`,
+                    },
+                })
+                .then(res => {
+                    let {
+                        data: {data},
+                    } = res;
+                    dispatch(getUserToken({
+                        userToken: token,
+                        userName: data,
+                        isLoggedIn: true,
+                    }));
+                }).catch(err => {
+                console.log("err : ", err);
+            })
+        }
+    }, []);
 
     const ModalShowOpen = () => {
         setModalShow(true);
@@ -22,17 +47,29 @@ const Navigation = () => {
         setModalShow(false);
     };
 
-    const loginBtn = () => {
+    const loginBtn = useCallback(() => {
         console.log("login btn click");
         setModalShow(true);
-    };
+    }, []);
+
+    const logoutBtn = useCallback(() => {
+        localStorage.removeItem("token")
+        dispatch(delUserToken());
+    }, []);
 
     return (
         <HeaderBorder>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/django">
-                    <Badge variant="secondary">python community</Badge>
-                </Navbar.Brand>
+                {isLoggedIn ? (
+                    <Navbar.Brand href="/django">
+                        <Badge variant="secondary">{userName}</Badge>
+                    </Navbar.Brand>
+                ) : (
+                    <Navbar.Brand href="/django">
+                        <Badge variant="secondary">python community</Badge>
+                    </Navbar.Brand>
+                )
+                }
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -43,10 +80,7 @@ const Navigation = () => {
                             <>
                                 <Nav.Link href="/mypage">Mypage</Nav.Link>
                                 <Nav.Link
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        // dispatch(delToken());
-                                    }}
+                                    onClick={logoutBtn}
                                 >
                                     SignOut
                                 </Nav.Link>

@@ -20,27 +20,25 @@ const InputModal = ({isOpen, close, textData}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const onClickBtn = () => {
+
+    const onClickBtn = useCallback(() => {
+
         if (text === "login") {
             let data = {
                 username: username,
                 password: password,
             };
-            console.log(data);
             Axios.post("/accounts/login/", data)
                 .then((res) => {
-                    console.log(res.data);
-                    console.log(res.data.data);
                     let {
                         data: {data: jwtToken},
                     } = res;
-
-                    // 토큰 저장!!
                     dispatch(getUserToken({
-                        userToken : jwtToken,
-                        isLoggedIn: true
+                        userToken: jwtToken,
+                        userName: username,
+                        isLoggedIn: true,
                     }));
-                    history.push("/django");
+                    localStorage.setItem("token", jwtToken);
                     setUserName("");
                     setPassword("");
                     close();
@@ -67,7 +65,8 @@ const InputModal = ({isOpen, close, textData}) => {
                     console.log(err);
                 });
         }
-    };
+    })
+
 
     const handleKeyPress = (e) => {
         if (e.key === "Enter") {

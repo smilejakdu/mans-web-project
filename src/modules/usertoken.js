@@ -9,17 +9,21 @@ export const delUserToken = createAction(DEL_TOKEN, (token) => token);
 const initialState = {
     userToken: '',
     isLoggedIn: false,
+    userName: '',
 };
 
 export default handleActions(
     {
         [GET_TOKEN]: (state, action) => ({
             ...state,
-            isLoggedIn: true,
-            userToken: action.userToken,
+            isLoggedIn: action.payload.isLoggedIn,
+            userName: action.payload.userName,
+            userToken: action.payload.userToken,
         }),
         [DEL_TOKEN]: (state, action) => ({
             ...state,
+            isLoggedIn: false,
+            userName: '',
             userToken: '',
         }),
     },
